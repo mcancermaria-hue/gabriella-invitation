@@ -202,6 +202,68 @@ header img{width:104px;margin:0 auto;opacity:.95}
 @media (hover:hover){.btn.primary:hover{color:#fff;opacity:.9;border-color:var(--green)}}
 .btn svg{width:16px;height:16px;flex:none}
 
+/* ── 참석 알려주기 ── */
+.rsvp{background:var(--paper-2);border-top:1px solid var(--line)}
+.field{margin-bottom:18px}
+.field label{
+  display:block;font-size:13.5px;font-weight:700;color:var(--ink);
+  margin-bottom:8px;letter-spacing:-.01em;
+}
+.field label em{
+  font-style:normal;font-size:11.5px;font-weight:700;color:var(--green);
+  margin-left:6px;letter-spacing:.02em;
+}
+.field input[type=text],
+.field input[type=tel]{
+  width:100%;padding:15px 16px;
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-radius:3px;
+  font-family:var(--sans);font-size:16px;
+  transition:border-color .15s;-webkit-appearance:none;appearance:none;
+}
+.field input::placeholder{color:var(--ink-faint)}
+.field input:focus{outline:none;border-color:var(--green)}
+.field input.err{border-color:#c0392b}
+@media (prefers-color-scheme: dark){.field input.err{border-color:#e77}}
+
+.stepper{display:flex;align-items:center;gap:10px}
+.stepper .stp{
+  width:48px;height:48px;flex:none;
+  background:var(--card);border:1px solid var(--line);border-radius:3px;
+  color:var(--ink);font-size:20px;line-height:1;cursor:pointer;
+  font-family:var(--sans);-webkit-tap-highlight-color:transparent;
+  transition:border-color .15s,color .15s;
+}
+.stepper .stp:active{transform:scale(.96)}
+@media (hover:hover){.stepper .stp:hover{border-color:var(--green);color:var(--green)}}
+.stepper input{
+  width:76px;padding:15px 8px;text-align:center;
+  background:var(--card);color:var(--ink);
+  border:1px solid var(--line);border-radius:3px;
+  font-family:var(--sans);font-size:16px;font-weight:700;
+  -moz-appearance:textfield;appearance:textfield;
+}
+.stepper input::-webkit-outer-spin-button,
+.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.stepper input:focus{outline:none;border-color:var(--green)}
+.stepper .unit{font-size:14.5px;color:var(--ink-soft);font-weight:700}
+.hint{font-size:12.5px;color:var(--ink-faint);margin-top:8px}
+
+#f-trap{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+.submit{width:100%;margin-top:26px;padding:17px 10px;font-size:16px}
+.submit[disabled]{opacity:.55;cursor:default}
+.privacy{
+  font-size:12px;color:var(--ink-faint);text-align:center;
+  margin-top:16px;line-height:1.8;word-break:keep-all;
+}
+
+.rsvp-done{text-align:center;padding:20px 0 8px}
+.rsvp-done .mark{color:var(--gold);font-size:20px;margin-bottom:16px}
+.rsvp-done .big{font-family:var(--serif);font-size:22px;font-weight:800;color:var(--ink)}
+.rsvp-done .sub{font-size:14px;color:var(--ink-soft);margin-top:12px;line-height:1.8}
+.rsvp-done .again{margin-top:26px;display:inline-flex;padding:13px 22px;font-size:14px}
+
 /* ── 푸터 ── */
 footer{
   text-align:center;padding:46px 0 56px;
@@ -326,16 +388,63 @@ footer a{color:var(--ink-faint)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         주소 복사
       </button>
-      <a class="btn primary wide" href="assets/event.ics" download="가브리엘라천사의집_축복미사.ics">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        캘린더에 저장
-      </a>
     </div>
 
     <p class="transit">
       주차 공간이 넉넉하지 않습니다.<br>
       가급적 대중교통을 이용해 주시면<br>감사하겠습니다.
     </p>
+  </div>
+</section>
+
+<section class="rsvp" id="rsvp">
+  <div class="wrap">
+    <h2 class="h2">참석 알려주기</h2>
+    <p class="h2-sub">준비에 큰 도움이 됩니다</p>
+
+    <form id="rsvpForm" novalidate>
+      <div class="field">
+        <label for="f-org">소속</label>
+        <input type="text" id="f-org" name="org" autocomplete="organization" placeholder="예) 마뗄암재단 후원회" maxlength="60">
+      </div>
+
+      <div class="field">
+        <label for="f-name">이름 <em>필수</em></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required maxlength="30">
+      </div>
+
+      <div class="field">
+        <label for="f-phone">연락처 <em>필수</em></label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel" required inputmode="tel" placeholder="010-0000-0000" maxlength="20">
+      </div>
+
+      <div class="field">
+        <label for="f-guests">동행인</label>
+        <div class="stepper">
+          <button type="button" class="stp" data-step="-1" aria-label="동행인 줄이기">−</button>
+          <input type="number" id="f-guests" name="guests" value="0" min="0" max="30" inputmode="numeric">
+          <button type="button" class="stp" data-step="1" aria-label="동행인 늘리기">＋</button>
+          <span class="unit">명</span>
+        </div>
+        <p class="hint">본인을 제외한 함께 오시는 분 수</p>
+      </div>
+
+      <input type="text" name="website" id="f-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button type="submit" class="btn primary wide submit" id="rsvpSubmit">참석 전달하기</button>
+
+      <p class="privacy">
+        전달해 주신 정보는 행사 준비와 참석 확인에만 사용하며,<br>
+        행사 종료 후 파기합니다.
+      </p>
+    </form>
+
+    <div class="rsvp-done" id="rsvpDone" hidden>
+      <p class="mark">✛</p>
+      <p class="big">전달되었습니다</p>
+      <p class="sub" id="rsvpDoneSub"></p>
+      <button type="button" class="btn again" id="rsvpAgain">다른 분도 전달하기</button>
+    </div>
   </div>
 </section>
 
@@ -381,6 +490,103 @@ footer a{color:var(--ink-faint)}
     } else {
       fallback();
     }
+  });
+
+  /* ───────── 참석 알려주기 ───────── */
+
+  // ↓↓↓ Google Apps Script 웹앱 URL을 여기에 붙여넣으세요 ↓↓↓
+  var ENDPOINT = '';
+  // ↑↑↑ 예: https://script.google.com/macros/s/AKfycb.../exec ↑↑↑
+
+  var form   = document.getElementById('rsvpForm');
+  var done   = document.getElementById('rsvpDone');
+  var doneSub= document.getElementById('rsvpDoneSub');
+  var submit = document.getElementById('rsvpSubmit');
+  var guests = document.getElementById('f-guests');
+
+  function clamp(n){ n = parseInt(n,10); if(isNaN(n)||n<0) n=0; if(n>30) n=30; return n; }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.stp'), function(b){
+    b.addEventListener('click', function(){
+      guests.value = clamp(clamp(guests.value) + parseInt(b.dataset.step,10));
+    });
+  });
+  guests.addEventListener('blur', function(){ guests.value = clamp(guests.value); });
+
+  function markError(el, bad){
+    el.classList.toggle('err', !!bad);
+    if (bad) { el.focus(); el.scrollIntoView({block:'center', behavior:'smooth'}); }
+  }
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+
+    var name  = document.getElementById('f-name');
+    var phone = document.getElementById('f-phone');
+    var org   = document.getElementById('f-org');
+    var trap  = document.getElementById('f-trap');
+
+    markError(name, false); markError(phone, false);
+
+    if (!name.value.trim()) { markError(name, true); show('이름을 입력해 주세요'); return; }
+    var digits = phone.value.replace(/[^0-9]/g,'');
+    if (digits.length < 9) { markError(phone, true); show('연락처를 확인해 주세요'); return; }
+    if (trap.value) return; // 자동 등록 차단
+
+    // 중복 저장 방지용 1회성 키 (재전송·더블탭 시 서버가 걸러냄)
+    if (!form.dataset.sid) {
+      form.dataset.sid = Date.now().toString(36) + Math.random().toString(36).slice(2,10);
+    }
+
+    var payload = {
+      sid: form.dataset.sid,
+      org: org.value.trim(),
+      name: name.value.trim(),
+      phone: phone.value.trim(),
+      guests: clamp(guests.value),
+      website: trap.value,
+      ua: navigator.userAgent.slice(0,120)
+    };
+
+    if (!ENDPOINT) { show('접수 준비 중입니다'); return; }
+
+    submit.disabled = true;
+    submit.textContent = '전달 중…';
+
+    var body = JSON.stringify(payload);
+
+    function succeeded(){
+      var total = 1 + payload.guests;
+      doneSub.innerHTML = payload.name + '님 외 ' + payload.guests + '명<br>총 ' + total + '명으로 전달되었습니다.';
+      form.hidden = true;
+      done.hidden = false;
+      done.scrollIntoView({block:'center', behavior:'smooth'});
+    }
+    function failed(){
+      submit.disabled = false;
+      submit.textContent = '참석 전달하기';
+      show('전달에 실패했습니다. 다시 시도해 주세요');
+    }
+
+    // Apps Script는 응답에 CORS 헤더를 붙일 수 없으므로 no-cors로 1회만 전송한다.
+    // (cors로 보내면 서버 저장은 되는데 응답을 못 읽어 재전송 → 시트에 중복 행이 쌓인다)
+    // text/plain 이어야 preflight 없이 통과한다.
+    fetch(ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: body
+    }).then(succeeded).catch(failed);
+  });
+
+  document.getElementById('rsvpAgain').addEventListener('click', function(){
+    form.reset();
+    guests.value = 0;
+    form.hidden = false;
+    done.hidden = true;
+    submit.disabled = false;
+    submit.textContent = '참석 전달하기';
+    document.getElementById('f-name').focus();
   });
 })();
 </script>
