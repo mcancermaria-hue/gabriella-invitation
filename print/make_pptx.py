@@ -128,7 +128,7 @@ rule(89.5)
 # ══════════════════════════════════════════════════════
 # 4. 조감도
 # ══════════════════════════════════════════════════════
-PIC_Y, PIC_H = 93.0, 35.0
+PIC_Y, PIC_H = 93.0, 30.0
 pic = slide.shapes.add_picture(os.path.join(HERE, "hero_crop.jpg"),
                                Mm(MARGIN_X), Mm(PIC_Y), Mm(CW), Mm(PIC_H))
 pic.line.color.rgb = LINE
@@ -200,12 +200,18 @@ NY = ROW_Y + len(PROG) * ROW_H + 4
 rule(NY)
 
 COL_W = (CW - 6) / 2
+# 각 항목은 줄 단위로 끊어 둔다 — 단어가 중간에 잘리지 않도록
 NOTICE = [
     ("준비해 주세요",
-     "야외미사 집전입니다. 양산·모자 등 햇빛을 가릴 것과 개인 텀블러를 지참해 주시면 좋겠습니다.",
+     ["야외미사 집전입니다.",
+      "양산·모자 등 햇빛을 가릴 것과 개인",
+      "텀블러를 지참해 주시면 좋겠습니다."],
      None),
     ("주차 안내",
-     "주차공간 부족으로 차량이동 분들께서는 마니산 공영 주차장을 이용하시고 행사장까지 차량이동 안내 받으시기 바랍니다.",
+     ["주차공간 부족으로 차량이동",
+      "분들께서는 마니산 공영 주차장을",
+      "이용하시고 행사장까지 차량이동",
+      "안내 받으시기 바랍니다."],
      "인천광역시 강화군 화도면 마니산로675번길 18 (상방리 405-4)"),
 ]
 for i, (title, body, addr) in enumerate(NOTICE):
@@ -213,7 +219,8 @@ for i, (title, body, addr) in enumerate(NOTICE):
     textbox(x, NY + 4, COL_W, 5,
             [(title, SANS, 7.5, True, GREEN, 1.8)], align=PP_ALIGN.LEFT)
     textbox(x, NY + 9.5, COL_W, 14,
-            [(body, SERIF, 9, False, INK)], align=PP_ALIGN.LEFT, line_spacing=1.45)
+            [(ln, SERIF, 9, False, INK) for ln in body],
+            align=PP_ALIGN.LEFT, line_spacing=1.45)
     if addr:
         textbox(x, NY + 24, COL_W, 6,
                 [(addr, SERIF, 8, False, INK_SOFT)], align=PP_ALIGN.LEFT, line_spacing=1.4)
