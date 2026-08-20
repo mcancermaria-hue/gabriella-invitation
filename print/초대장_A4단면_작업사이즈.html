@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>가브리엘라 천사의 집 축복미사 — 초대장 (작업사이즈 212×299)</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: 212mm 299mm; margin: 0; }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:212mm}
+:root{
+  --ink:#1c2a25; --ink-soft:#57665f; --ink-faint:#8a968f;
+  --green:#157a63; --gold:#a8874f; --line:#ddd5c4; --paper:#ffffff;
+}
+body{
+  font-family:'Nanum Myeongjo','Apple SD Gothic Neo',serif;
+  color:var(--ink); background:var(--paper);
+  padding:1mm;          /* 재단여백 1mm — 잘려나갈 영역 */
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.page{
+  width:210mm;height:297mm;padding:12mm 20mm 12mm;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  position:relative;overflow:hidden;
+}
+
+/* ── 머리 ── */
+.logo{width:18mm;margin-bottom:4mm}
+.kicker{
+  font-family:'Nanum Gothic','Apple SD Gothic Neo',sans-serif;
+  font-size:8.5pt;font-weight:700;letter-spacing:.2em;
+  color:var(--green);margin-bottom:5mm;
+}
+h1{font-size:23pt;font-weight:800;letter-spacing:-.035em;line-height:1.2}
+h1 .sub{
+  display:block;font-size:.53em;font-weight:400;color:var(--ink-soft);
+  margin-top:3mm;letter-spacing:.02em;
+}
+
+/* ── 일시·장소 ── */
+.when{
+  margin-top:5mm;padding:4.5mm 0;
+  border-top:1.1pt solid var(--ink);border-bottom:.5pt solid var(--line);
+  width:100%;
+}
+.when .d{font-size:15pt;font-weight:800;letter-spacing:-.03em}
+.when .p{font-size:10pt;color:var(--ink-soft);margin-top:2.5mm;line-height:1.6}
+.when .p b{font-weight:700;color:var(--ink)}
+
+/* ── 조감도 ── */
+.pic{width:100%;margin-top:4mm}
+.pic img{
+  width:100%;height:35mm;object-fit:cover;object-position:center 52%;
+  display:block;border:.4pt solid var(--line);
+}
+.pic figcaption{font-size:7.5pt;color:var(--ink-faint);margin-top:2mm;letter-spacing:.02em}
+
+/* ── 초대의 글 ── */
+.letter{margin-top:5mm;width:100%}
+.letter p{font-size:10pt;line-height:1.72;margin-bottom:2.2mm}
+.letter p.lead{font-weight:700;font-size:10.5pt}
+.letter p.em{font-weight:700;font-size:11pt;letter-spacing:-.01em;color:var(--green)}
+.letter p:last-child{margin-bottom:0}
+
+/* ── 식순 ── */
+.prog{
+  width:100%;margin-top:5mm;padding-top:4mm;border-top:.5pt solid var(--line);
+  list-style:none;
+}
+.prog .cap{
+  font-family:'Nanum Gothic','Apple SD Gothic Neo',sans-serif;
+  font-size:8pt;font-weight:700;letter-spacing:.22em;color:var(--green);margin-bottom:3mm;
+}
+.prog li{
+  display:grid;grid-template-columns:16mm 1fr;gap:5mm;
+  text-align:left;padding:2mm 0;border-bottom:.3pt solid var(--line);
+}
+.prog li:last-child{border-bottom:none}
+.prog .t{font-size:10pt;font-weight:800;letter-spacing:-.02em;color:var(--green)}
+.prog .n{font-size:10pt;font-weight:700;display:inline}
+.prog .x{font-size:9pt;color:var(--ink-soft);display:inline;margin-left:2.5mm}
+
+/* ── 안내 ── */
+.notice{
+  width:100%;margin-top:auto;padding-top:4.5mm;border-top:.5pt solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:6mm;text-align:left;
+}
+.notice .b{font-size:9pt;line-height:1.7;color:var(--ink)}
+.notice .b b{
+  display:block;font-family:'Nanum Gothic','Apple SD Gothic Neo',sans-serif;
+  font-size:7.5pt;font-weight:700;letter-spacing:.16em;color:var(--green);margin-bottom:2mm;
+}
+.notice .b b.i{display:inline;font-family:inherit;font-size:inherit;letter-spacing:0;color:var(--ink);margin:0}
+.notice .ad{
+  display:block;margin-top:1.8mm;font-size:8pt;color:var(--ink-soft);line-height:1.5;
+}
+
+/* ── 꼬리 ── */
+.foot{
+  width:100%;margin-top:5mm;padding-top:4mm;border-top:1.1pt solid var(--ink);
+  font-size:9.5pt;font-weight:700;letter-spacing:-.01em;
+}
+.foot span{
+  display:block;font-family:'Nanum Gothic','Apple SD Gothic Neo',sans-serif;
+  font-size:7.5pt;font-weight:400;color:var(--ink-faint);margin-top:1.5mm;letter-spacing:.06em;
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <img class="logo" src="logo.png" alt="마뗄암재단">
+  <p class="kicker">말기암환자 무료쉼터</p>
+  <h1>가브리엘라 천사의 집<span class="sub">축복미사</span></h1>
+
+  <div class="when">
+    <p class="d">2026년 9월 17일 목요일 오전 11시</p>
+    <p class="p">
+      <b>가브리엘라 천사의 집</b><br>
+      인천광역시 강화군 화도면 안골길61번길 17-12 (내리 904)
+    </p>
+  </div>
+
+  <figure class="pic">
+    <img src="hero.jpg" alt="">
+    <figcaption>가브리엘라 천사의 집 조감도</figcaption>
+  </figure>
+
+  <div class="letter">
+    <p class="lead">환자와 가족이 삶의 마지막 여정을 두려움이 아닌<br>
+    사랑과 감사 속에서 준비할 수 있도록 돕는 무료 돌봄시설입니다.</p>
+
+    <p class="em">죽음을 기다리는 곳이 아니라 삶을 완성하는 곳!</p>
+
+    <p>종교와 관계없이 무료 쉼터와 돌봄을 제공하는 이곳은<br>
+    소중한 분들의 기도와 성원에 힘입어<br>
+    하느님 사랑의 터전을 이루게 되었습니다.</p>
+
+    <p>이제 첫 문을 여는 자리에 소중한 여러분을 모시고자 합니다.</p>
+  </div>
+
+  <ul class="prog">
+    <p class="cap">식 순</p>
+    <li>
+      <span class="t">11:00</span>
+      <div>
+        <span class="n">축복미사</span>
+        <span class="x">인천교구장 정신철 요한 세례자 주교 주례 · 염수정 안드레아 추기경, 사제단 공동집전</span>
+      </div>
+    </li>
+    <li>
+      <span class="t">12:20</span>
+      <div><span class="n">기념식</span><span class="x">재단 임·직원, 내·외빈 참석</span></div>
+    </li>
+    <li>
+      <span class="t">이후</span>
+      <div><span class="n">오찬</span><span class="x">식사가 제공됩니다</span></div>
+    </li>
+  </ul>
+
+  <div class="notice">
+    <p class="b">
+      <b>준비해 주세요</b>
+      야외미사 집전입니다. 양산·모자 등 햇빛을 가릴 것과 개인 텀블러를 지참해 주시면 좋겠습니다.
+    </p>
+    <p class="b">
+      <b>주차 안내</b>
+      주차공간 부족으로 차량이동 분들께서는 <b class="i">마니산 공영 주차장</b>을 이용하시고 행사장까지 차량이동 안내 받으시기 바랍니다.
+      <span class="ad">인천광역시 강화군 화도면 마니산로675번길 18 (상방리 405-4)</span>
+    </p>
+  </div>
+
+  <p class="foot">
+    재단법인 마뗄암재단
+    <span>Mater Cancer Foundation · www.mcancer.com</span>
+  </p>
+
+</div>
+</body>
+</html>
