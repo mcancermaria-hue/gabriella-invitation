@@ -128,7 +128,7 @@ rule(89.5)
 # ══════════════════════════════════════════════════════
 # 4. 조감도
 # ══════════════════════════════════════════════════════
-PIC_Y, PIC_H = 93.0, 42.0
+PIC_Y, PIC_H = 93.0, 35.0
 pic = slide.shapes.add_picture(os.path.join(HERE, "hero_crop.jpg"),
                                Mm(MARGIN_X), Mm(PIC_Y), Mm(CW), Mm(PIC_H))
 pic.line.color.rgb = LINE
@@ -140,7 +140,7 @@ textbox(MARGIN_X, PIC_Y + PIC_H + 2, CW, 5,
 # ══════════════════════════════════════════════════════
 # 5. 초대의 글
 # ══════════════════════════════════════════════════════
-LY = 147.0
+LY = 140.0
 
 textbox(MARGIN_X, LY, CW, 14,
         [("환자와 가족이 삶의 마지막 여정을 두려움이 아닌", SERIF, 10.5, True, INK),
@@ -164,7 +164,7 @@ textbox(MARGIN_X, LY + 46, CW, 8,
 # ══════════════════════════════════════════════════════
 # 6. 식순
 # ══════════════════════════════════════════════════════
-PY = 205.0
+PY = 198.0
 rule(PY)
 
 textbox(MARGIN_X, PY + 4, CW, 6,
@@ -200,26 +200,32 @@ NY = ROW_Y + len(PROG) * ROW_H + 4
 rule(NY)
 
 COL_W = (CW - 6) / 2
-for i, (title, body) in enumerate([
+NOTICE = [
     ("준비해 주세요",
-     "야외미사 집전입니다. 양산·모자 등 햇빛을 가릴 것과 개인 텀블러를 지참해 주시면 좋겠습니다."),
-    ("오시는 길",
-     "주차 공간이 넉넉하지 않습니다. 가급적 대중교통을 이용해 주시면 감사하겠습니다."),
-]):
+     "야외미사 집전입니다. 양산·모자 등 햇빛을 가릴 것과 개인 텀블러를 지참해 주시면 좋겠습니다.",
+     None),
+    ("주차 안내",
+     "가브리엘라 천사의 집 안에는 주차 공간이 부족합니다. 마니산 공영주차장에 주차해 주시면, 행사장까지 이동 차량을 운행합니다.",
+     "인천광역시 강화군 화도면 마니산로675번길 18 (상방리 405-4)"),
+]
+for i, (title, body, addr) in enumerate(NOTICE):
     x = MARGIN_X + i * (COL_W + 6)
     textbox(x, NY + 4, COL_W, 5,
             [(title, SANS, 7.5, True, GREEN, 1.8)], align=PP_ALIGN.LEFT)
     textbox(x, NY + 9.5, COL_W, 14,
             [(body, SERIF, 9, False, INK)], align=PP_ALIGN.LEFT, line_spacing=1.45)
+    if addr:
+        textbox(x, NY + 24, COL_W, 6,
+                [(addr, SERIF, 8, False, INK_SOFT)], align=PP_ALIGN.LEFT, line_spacing=1.4)
 
 # ══════════════════════════════════════════════════════
 # 8. 꼬리말
 # ══════════════════════════════════════════════════════
-FY = NY + 23
+FY = NY + 32
 rule(FY, 1.1, INK)
 textbox(MARGIN_X, FY + 3.5, CW, 7,
         [("재단법인 마뗄암재단", SERIF, 9.5, True, INK)])
-textbox(MARGIN_X, FY + 11.5, CW, 6,
+textbox(MARGIN_X, FY + 10, CW, 5,
         [("Mater Cancer Foundation · www.mcancer.com", SANS, 7.5, False, INK_FAINT, 0.6)])
 
 prs.save(OUT)
