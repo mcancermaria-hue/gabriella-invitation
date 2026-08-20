@@ -213,7 +213,7 @@ header img{width:104px;margin:0 auto;opacity:.95}
 .btn svg{width:16px;height:16px;flex:none}
 
 /* ── 참석 알려주기 ── */
-.rsvp{background:var(--paper-2);border-top:1px solid var(--line)}
+.rsvp{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .field{margin-bottom:18px}
 .field label{
   display:block;font-size:13.5px;font-weight:700;color:var(--ink);
@@ -322,6 +322,57 @@ footer a{color:var(--ink-faint)}
 
 </div>
 
+<section class="rsvp" id="rsvp">
+  <div class="wrap">
+    <h2 class="h2">참석 알려주기</h2>
+    <p class="h2-sub">준비에 큰 도움이 됩니다</p>
+
+    <form id="rsvpForm" novalidate>
+      <div class="field">
+        <label for="f-org">소속</label>
+        <input type="text" id="f-org" name="org" autocomplete="organization" placeholder="예) 마뗄암재단 후원회" maxlength="60">
+      </div>
+
+      <div class="field">
+        <label for="f-name">이름 <em>필수</em></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required maxlength="30">
+      </div>
+
+      <div class="field">
+        <label for="f-phone">연락처 <em>필수</em></label>
+        <input type="tel" id="f-phone" name="phone" autocomplete="tel" required inputmode="tel" placeholder="010-0000-0000" maxlength="20">
+      </div>
+
+      <div class="field">
+        <label for="f-guests">동행인</label>
+        <div class="stepper">
+          <button type="button" class="stp" data-step="-1" aria-label="동행인 줄이기">−</button>
+          <input type="number" id="f-guests" name="guests" value="0" min="0" max="30" inputmode="numeric">
+          <button type="button" class="stp" data-step="1" aria-label="동행인 늘리기">＋</button>
+          <span class="unit">명</span>
+        </div>
+        <p class="hint">본인을 제외한 함께 오시는 분 수</p>
+      </div>
+
+      <input type="text" name="website" id="f-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <button type="submit" class="btn primary wide submit" id="rsvpSubmit">참석 전달하기</button>
+
+      <p class="privacy">
+        전달해 주신 정보는 행사 준비와 참석 확인에만 사용하며,<br>
+        행사 종료 후 파기합니다.
+      </p>
+    </form>
+
+    <div class="rsvp-done" id="rsvpDone" hidden>
+      <p class="mark">✛</p>
+      <p class="big">전달되었습니다</p>
+      <p class="sub" id="rsvpDoneSub"></p>
+      <button type="button" class="btn again" id="rsvpAgain">다른 분도 전달하기</button>
+    </div>
+  </div>
+</section>
+
 <section class="letter">
   <div class="wrap">
     <div class="rule"><span>✛</span></div>
@@ -410,56 +461,6 @@ footer a{color:var(--ink-faint)}
   </div>
 </section>
 
-<section class="rsvp" id="rsvp">
-  <div class="wrap">
-    <h2 class="h2">참석 알려주기</h2>
-    <p class="h2-sub">준비에 큰 도움이 됩니다</p>
-
-    <form id="rsvpForm" novalidate>
-      <div class="field">
-        <label for="f-org">소속</label>
-        <input type="text" id="f-org" name="org" autocomplete="organization" placeholder="예) 마뗄암재단 후원회" maxlength="60">
-      </div>
-
-      <div class="field">
-        <label for="f-name">이름 <em>필수</em></label>
-        <input type="text" id="f-name" name="name" autocomplete="name" required maxlength="30">
-      </div>
-
-      <div class="field">
-        <label for="f-phone">연락처 <em>필수</em></label>
-        <input type="tel" id="f-phone" name="phone" autocomplete="tel" required inputmode="tel" placeholder="010-0000-0000" maxlength="20">
-      </div>
-
-      <div class="field">
-        <label for="f-guests">동행인</label>
-        <div class="stepper">
-          <button type="button" class="stp" data-step="-1" aria-label="동행인 줄이기">−</button>
-          <input type="number" id="f-guests" name="guests" value="0" min="0" max="30" inputmode="numeric">
-          <button type="button" class="stp" data-step="1" aria-label="동행인 늘리기">＋</button>
-          <span class="unit">명</span>
-        </div>
-        <p class="hint">본인을 제외한 함께 오시는 분 수</p>
-      </div>
-
-      <input type="text" name="website" id="f-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <button type="submit" class="btn primary wide submit" id="rsvpSubmit">참석 전달하기</button>
-
-      <p class="privacy">
-        전달해 주신 정보는 행사 준비와 참석 확인에만 사용하며,<br>
-        행사 종료 후 파기합니다.
-      </p>
-    </form>
-
-    <div class="rsvp-done" id="rsvpDone" hidden>
-      <p class="mark">✛</p>
-      <p class="big">전달되었습니다</p>
-      <p class="sub" id="rsvpDoneSub"></p>
-      <button type="button" class="btn again" id="rsvpAgain">다른 분도 전달하기</button>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
